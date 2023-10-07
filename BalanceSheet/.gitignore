@@ -2,6 +2,11 @@
 cache/
 out/
 
+# forge lib
+lib/
+.github/
+.vscode
+
 # Ignores development broadcast logs
 !/broadcast
 /broadcast/*/31337/
