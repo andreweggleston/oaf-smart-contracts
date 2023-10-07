@@ -1,66 +1,17 @@
-## Foundry
+# Balance Sheet
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Exercise: Write a smart contract that does the following:
+      1. Maintains a balance sheet of addresses -> to amounts.
+      2. Gives the deployer of the contract a balance of 10_000 at the time of contract creation.
+      3. Allows an address to transfer its balance to another address.
 
-Foundry consists of:
+## Solution: 
+      1. create a 'mapping' from addresses to balances (uint)
+      2. create a constructor that uses msg.sender to grant an initial balance of 10_000 to the deployer of the contract
+      3. create a public method to transfer from a senders balance to a receivers balance
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## Tests:
+      1. constructor does what its supposed to do
+      2. transfer from an empty balance fails
+      3. transfer amount less than balance succeeds and moves the correct amount
+      4. transfer amount more than balance fails
