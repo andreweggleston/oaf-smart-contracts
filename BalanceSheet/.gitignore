@@ -6,6 +6,7 @@ out/
 lib/
 .github/
 .vscode
+remappings.txt
 
 # Ignores development broadcast logs
 !/broadcast
