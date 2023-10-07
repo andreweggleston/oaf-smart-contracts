@@ -25,9 +25,16 @@ contract BalanceSheetTest is Test {
     }
 
     function test_transfer() public {
-        vm.prank(alice);
+        uint256 alice_balance_initial = balanceSheet.balanceOf(alice);
+        uint256 bob_balance_initial = balanceSheet.balanceOf(bob);
 
+        vm.prank(alice);
         balanceSheet.transfer(bob, 5_000);
+
+        uint256 alice_balance_after = balanceSheet.balanceOf(alice);
+        uint256 bob_balance_after = balanceSheet.balanceOf(alice);
+        assertEq(bob_balance_after, bob_balance_initial + 5_000);
+        assertEq(alice_balance_after, alice_balance_initial - 5_000);
     }
 
     function testFail_transfer_more_than_balance() public {
